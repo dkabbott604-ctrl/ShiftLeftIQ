@@ -44,6 +44,7 @@
         <ul class="nav-links">
           <li><a href="#" onclick="showPage('home')">Home</a></li>
           <li><a href="#" onclick="showPage('services')">Services</a></li>
+          <li><a href="#" onclick="showPage('itsm')">ITSM</a></li>
           <li><a href="#" onclick="showPage('about')">About</a></li>
           <li><a href="#" onclick="showPage('contact')">Contact</a></li>
         </ul>
@@ -54,6 +55,7 @@
       <div class="mobile-menu hidden" id="mobile-menu">
         <a href="#" onclick="showPage('home'); toggleMenu()">Home</a>
         <a href="#" onclick="showPage('services'); toggleMenu()">Services</a>
+        <a href="#" onclick="showPage('itsm'); toggleMenu()">ITSM</a>
         <a href="#" onclick="showPage('about'); toggleMenu()">About</a>
         <a href="#" onclick="showPage('contact'); toggleMenu()">Contact</a>
       </div>
@@ -293,6 +295,259 @@
           <p id="form-success" class="form-success hidden">✓ Message sent. We'll be in touch shortly.</p>
         </form>
       </div>
+    </section>
+
+    <!-- ITSM PAGE -->
+    <section id="page-itsm" class="page hidden">
+
+      <div class="itsm-hero">
+        <div class="itsm-hero-left">
+          <div class="itsm-eyebrow">// Shift-Left ITSM Consulting</div>
+          <h1 class="itsm-h1">Resolve More.<br>Spend <span class="accent">Less.</span><br>Scale Faster.</h1>
+          <p class="itsm-sub">We help organizations under 5,000 employees optimize IT Service Management through proven Shift-Left strategies — moving support to the lowest-cost, most efficient point of resolution.</p>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="showPage('contact')">Free Readiness Assessment</button>
+            <button class="btn-secondary">See Client Results</button>
+          </div>
+        </div>
+        <div class="itsm-hero-right">
+          <div class="pyramid-title">// The Shift-Left Resolution Model</div>
+          <div class="pyramid-level pl-1"><span class="pl-label">🤖 AI / Automation</span><span class="pl-tag">Tier 0</span></div>
+          <div class="pyramid-level pl-2"><span class="pl-label">🔍 Self-Service Portal</span><span class="pl-tag">Tier 1</span></div>
+          <div class="pyramid-level pl-3"><span class="pl-label">💬 Service Desk</span><span class="pl-tag">Tier 2</span></div>
+          <div class="pyramid-level pl-4"><span class="pl-label">⚙️ Specialist Teams</span><span class="pl-tag">Tier 3</span></div>
+          <div class="pyramid-arrow">← shift resolution left &nbsp;|&nbsp; reduce cost →</div>
+          <div class="itsm-stats">
+            <div class="istat"><span class="istat-num">40%</span><span class="istat-lbl">Cost Reduction</span></div>
+            <div class="istat"><span class="istat-num">3×</span><span class="istat-lbl">Faster MTTR</span></div>
+            <div class="istat"><span class="istat-num">85%</span><span class="istat-lbl">CSAT Target</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Six Pillars -->
+      <div class="itsm-section">
+        <div class="itsm-section-label">// What We Do</div>
+        <h2 class="itsm-h2">Six Pillars of ITSM Transformation</h2>
+        <p class="itsm-intro">Every engagement is grounded in process, people, and technology — aligned to your maturity level and business goals.</p>
+        <div class="itsm-grid-3">
+          <div class="itsm-card">
+            <div class="itsm-icon">🔄</div>
+            <h3>Process Optimization</h3>
+            <p>Redesign incident, change, and problem management workflows to eliminate waste, reduce toil, and align to ITIL 4 best practices.</p>
+            <span class="itsm-tag">ITIL 4 Aligned</span>
+          </div>
+          <div class="itsm-card">
+            <div class="itsm-icon">📚</div>
+            <h3>Knowledge Management</h3>
+            <p>Build a self-sustaining KCS knowledge base that powers agent efficiency, self-service deflection, and AI-assisted resolution at scale.</p>
+            <span class="itsm-tag">KCS Methodology</span>
+          </div>
+          <div class="itsm-card">
+            <div class="itsm-icon">🖥️</div>
+            <h3>Self-Service Enablement</h3>
+            <p>Design and deploy service portals and automated workflows that empower end-users to resolve issues without ever contacting the help desk.</p>
+            <span class="itsm-tag">Shift-Left</span>
+          </div>
+          <div class="itsm-card">
+            <div class="itsm-icon">🤖</div>
+            <h3>AI &amp; Automation</h3>
+            <p>Integrate intelligent automation, virtual agents, and AI-assisted triage across your ITSM platform to handle Tier-0 volume without human effort.</p>
+            <span class="itsm-tag">AI-Powered</span>
+          </div>
+          <div class="itsm-card">
+            <div class="itsm-icon">📊</div>
+            <h3>SLA Governance &amp; Metrics</h3>
+            <p>Establish meaningful SLA frameworks, dashboards, and OKR-linked metrics that give leadership real-time visibility into IT performance.</p>
+            <span class="itsm-tag">Executive Reporting</span>
+          </div>
+          <div class="itsm-card">
+            <div class="itsm-icon">🎯</div>
+            <h3>Executive Coaching</h3>
+            <p>ICF-credentialed coaching for IT leaders navigating change. We bridge the knowing-doing gap with ADKAR-based change management frameworks.</p>
+            <span class="itsm-tag">ICF Credentialed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- The Method -->
+      <div class="itsm-section itsm-dark">
+        <div class="itsm-section-label">// How We Work</div>
+        <h2 class="itsm-h2">The Meridian Method</h2>
+        <p class="itsm-intro muted">A structured four-phase engagement model that delivers measurable outcomes — not just recommendations.</p>
+        <div class="itsm-steps">
+          <div class="itsm-step">
+            <span class="step-num">01 / DISCOVER</span>
+            <div class="step-title">Maturity Assessment &amp; Gap Analysis</div>
+            <p class="step-desc">We audit your current-state ITSM processes, tooling, and team capabilities using our proprietary maturity model — producing a prioritized gap analysis and opportunity roadmap.</p>
+          </div>
+          <div class="itsm-step">
+            <span class="step-num">02 / DESIGN</span>
+            <div class="step-title">Strategy &amp; Architecture Blueprint</div>
+            <p class="step-desc">Co-design a future-state operating model with defined shift-left targets, technology architecture, KPIs, and a 90/180/360-day implementation roadmap.</p>
+          </div>
+          <div class="itsm-step">
+            <span class="step-num">03 / DEPLOY</span>
+            <div class="step-title">Implementation &amp; Change Management</div>
+            <p class="step-desc">Hands-on deployment of process changes, platform configurations, knowledge articles, and self-service capabilities — with ADKAR-driven adoption to ensure lasting change.</p>
+          </div>
+          <div class="itsm-step">
+            <span class="step-num">04 / SUSTAIN</span>
+            <div class="step-title">Governance &amp; Continuous Improvement</div>
+            <p class="step-desc">Establish ongoing governance cadence, executive dashboards, and quarterly CI reviews so gains compound over time and your team owns the outcomes.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Success Stories -->
+      <div class="itsm-section">
+        <div class="itsm-section-label">// Client Results</div>
+        <h2 class="itsm-h2">Success Stories That Speak for Themselves</h2>
+        <p class="itsm-intro">Every story is a real engagement. Real metrics. Real transformation.</p>
+        <div class="itsm-stories">
+          <div class="itsm-story featured-story">
+            <div class="story-vis">
+              <div class="story-ind">Healthcare · 2,800 Employees</div>
+              <div><div class="story-big-num">62%</div><div class="story-big-lbl">reduction in Tier-1 ticket volume in 6 months</div></div>
+            </div>
+            <div class="story-body-wrap">
+              <span class="itsm-tag">Self-Service + Knowledge Management</span>
+              <h3 class="story-ttl">Regional Health Network Cuts Help Desk Volume in Half</h3>
+              <p class="story-p">A regional healthcare organization was drowning in repetitive password resets, access requests, and software installs — all hitting the help desk at Tier-1 cost. We implemented a structured knowledge base, automated self-service workflows, and a rebranded employee portal within a 90-day sprint.</p>
+              <div class="story-metrics">
+                <div class="sm-item"><span class="sm-num">62%</span><span class="sm-lbl">Deflection Rate</span></div>
+                <div class="sm-item"><span class="sm-num">$480K</span><span class="sm-lbl">Annual Savings</span></div>
+                <div class="sm-item"><span class="sm-num">91%</span><span class="sm-lbl">CSAT Score</span></div>
+                <div class="sm-item"><span class="sm-num">4.2hr→47m</span><span class="sm-lbl">Resolution Time</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="itsm-story-row">
+            <div class="itsm-story">
+              <div class="story-vis">
+                <div class="story-ind">Financial Services · 1,200 Employees</div>
+                <div><div class="story-big-num">38%</div><div class="story-big-lbl">improvement in SLA compliance</div></div>
+              </div>
+              <div class="story-body-wrap">
+                <span class="itsm-tag">SLA Governance + Process Design</span>
+                <h3 class="story-ttl">FinTech Firm Rebuilds ITSM Foundation Post-Acquisition</h3>
+                <p class="story-p">Following a merger, this financial services firm had fragmented ITSM processes across two legacy systems. We unified the operating model, redesigned SLA tiers, and stood up a consolidated service desk within 120 days.</p>
+                <div class="story-metrics">
+                  <div class="sm-item"><span class="sm-num">38%</span><span class="sm-lbl">SLA Compliance</span></div>
+                  <div class="sm-item"><span class="sm-num">2→1</span><span class="sm-lbl">Platforms</span></div>
+                  <div class="sm-item"><span class="sm-num">120d</span><span class="sm-lbl">Time to Value</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="itsm-story">
+              <div class="story-vis">
+                <div class="story-ind">Manufacturing · 4,100 Employees</div>
+                <div><div class="story-big-num">3.1×</div><div class="story-big-lbl">improvement in MTTR across all incident tiers</div></div>
+              </div>
+              <div class="story-body-wrap">
+                <span class="itsm-tag">AI Automation + Incident Management</span>
+                <h3 class="story-ttl">Global Manufacturer Deploys AI-Powered Triage at Scale</h3>
+                <p class="story-p">A manufacturing enterprise struggled with slow incident triage and over-escalation to Tier-3 specialists. We deployed an AI virtual agent integrated with their ITSM platform, reducing misrouted tickets by 71%.</p>
+                <div class="story-metrics">
+                  <div class="sm-item"><span class="sm-num">71%</span><span class="sm-lbl">Misroute Reduction</span></div>
+                  <div class="sm-item"><span class="sm-num">3.1×</span><span class="sm-lbl">MTTR</span></div>
+                  <div class="sm-item"><span class="sm-num">18%</span><span class="sm-lbl">Headcount Efficiency</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why Us -->
+      <div class="itsm-section itsm-dark">
+        <div class="itsm-section-label">// Our Differentiation</div>
+        <h2 class="itsm-h2">Built Different. By Design.</h2>
+        <div class="itsm-why">
+          <div class="itsm-diffs">
+            <div class="itsm-diff"><span class="diff-ico">🏆</span><div><strong>30+ Years of Practitioner Experience</strong><p>We've led IT organizations through startups, enterprises, acquisitions, and post-merger transitions. Our advice comes from real experience — not theory.</p></div></div>
+            <div class="itsm-diff"><span class="diff-ico">🔗</span><div><strong>ITSM + Executive Coaching in One Practice</strong><p>The only consultancy that pairs deep ITSM technical expertise with ICF-credentialed coaching — closing the knowing-doing gap that sinks most transformations.</p></div></div>
+            <div class="itsm-diff"><span class="diff-ico">🧭</span><div><strong>ADKAR-Driven Change Management</strong><p>Technology alone doesn't transform organizations. We embed Prosci ADKAR methodology into every engagement so adoption sticks long after we leave.</p></div></div>
+            <div class="itsm-diff"><span class="diff-ico">🎯</span><div><strong>Purpose-Built for Mid-Market IT</strong><p>Under 5,000 employees. Agile enough to move fast. Complex enough to need real ITSM discipline. That's our sweet spot — and we stay in it.</p></div></div>
+          </div>
+          <div class="itsm-scope">
+            <h3>Who We Serve Best</h3>
+            <p>Our engagements are purpose-built for organizations where ITSM maturity matters but budget is finite.</p>
+            <ul class="scope-list">
+              <li><span class="scope-chk">✓</span>500 – 5,000 employees</li>
+              <li><span class="scope-chk">✓</span>IT teams of 5 to 50 staff</li>
+              <li><span class="scope-chk">✓</span>ServiceNow, Freshservice, Jira, or similar ITSM platforms</li>
+              <li><span class="scope-chk">✓</span>Organizations experiencing rapid growth or post-merger integration</li>
+              <li><span class="scope-chk">✓</span>CIOs under pressure to reduce OpEx while improving service quality</li>
+              <li><span class="scope-chk">✓</span>Teams exploring AI adoption with real governance concerns</li>
+            </ul>
+            <div class="scope-note"><strong>Our promise:</strong> Every engagement includes a measurable ROI target defined in week one. If we can't find 3× value in your environment, we'll tell you before you sign.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 90-Day Plan -->
+      <div class="itsm-section">
+        <div class="itsm-section-label">// Build Roadmap</div>
+        <h2 class="itsm-h2">90-Day Implementation Plan</h2>
+        <p class="itsm-intro">From zero to production-ready in three focused sprints — prioritizing lead generation and content impact from day one.</p>
+        <div class="itsm-phases">
+          <div class="itsm-phase">
+            <span class="phase-n">Phase 01</span>
+            <div class="phase-nm">Foundation</div>
+            <div class="phase-dur">Weeks 1 – 4</div>
+            <ul class="phase-list">
+              <li>Domain, DNS, and Cloudflare configuration</li>
+              <li>Next.js + Tailwind project scaffolding</li>
+              <li>Sanity CMS setup and content schema</li>
+              <li>Supabase PostgreSQL provisioning</li>
+              <li>Homepage, Services, and About pages</li>
+              <li>HubSpot form integration (lead capture)</li>
+              <li>Core SEO metadata and sitemap</li>
+            </ul>
+          </div>
+          <div class="itsm-phase">
+            <span class="phase-n">Phase 02</span>
+            <div class="phase-nm">Content &amp; Conversion</div>
+            <div class="phase-dur">Weeks 5 – 8</div>
+            <ul class="phase-list">
+              <li>Client Success Stories CMS templates</li>
+              <li>Interactive Assessment intake form</li>
+              <li>Calendly scheduling integration</li>
+              <li>Blog / Insights content pipeline</li>
+              <li>SendGrid email sequences setup</li>
+              <li>Google Analytics 4 event tracking</li>
+              <li>Mobile responsiveness QA pass</li>
+            </ul>
+          </div>
+          <div class="itsm-phase">
+            <span class="phase-n">Phase 03</span>
+            <div class="phase-nm">Launch &amp; Growth</div>
+            <div class="phase-dur">Weeks 9 – 12</div>
+            <ul class="phase-list">
+              <li>Performance audit (Core Web Vitals)</li>
+              <li>Accessibility audit (WCAG 2.1 AA)</li>
+              <li>LinkedIn Insight Tag + conversion pixels</li>
+              <li>Full content population and review</li>
+              <li>Staging → Production deployment</li>
+              <li>Analytics dashboards and KPI baselines</li>
+              <li>Team CMS training and handoff</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="itsm-section itsm-dark itsm-cta">
+        <div class="itsm-section-label" style="justify-content:center;">// Take the First Step</div>
+        <h2 class="itsm-h2" style="text-align:center;">Ready to Shift Left?</h2>
+        <p class="itsm-intro muted" style="text-align:center;margin:0 auto 2.5rem;">Start with a free 60-minute ITSM Readiness Assessment. We'll identify your top three highest-ROI opportunities — no obligation, no sales pitch.</p>
+        <div class="itsm-cta-btns">
+          <button class="btn-primary" onclick="showPage('contact')">Schedule Free Assessment</button>
+          <button class="btn-secondary">Read Client Stories</button>
+        </div>
+      </div>
+
     </section>
 
     <!-- FOOTER -->
