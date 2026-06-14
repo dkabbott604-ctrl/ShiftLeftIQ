@@ -1,20 +1,1561 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ShiftLeftIQ — Coming Soon</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian ITSM — Shift-Left. Scale Up. Succeed.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1E35;
+    --navy-mid: #122840;
+    --navy-light: #1A3A56;
+    --gold: #C8973A;
+    --gold-light: #E0B060;
+    --gold-pale: #F5E6C8;
+    --cream: #FAF7F2;
+    --white: #FFFFFF;
+    --slate: #6B8299;
+    --text: #1C2B3A;
+    --text-muted: #4A6178;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(11,30,53,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,151,58,0.2);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.875rem; font-weight: 500;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 0.55rem 1.4rem;
+    border-radius: 3px;
+    font-size: 0.85rem; font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 100px 5% 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Geometric background texture */
+  #hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(200,151,58,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,151,58,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  #hero::after {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(200,151,58,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-left { position: relative; z-index: 2; }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: rgba(200,151,58,0.12);
+    border: 1px solid rgba(200,151,58,0.3);
+    color: var(--gold-light);
+    padding: 0.35rem 0.9rem;
+    border-radius: 2px;
+    font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 1.8rem;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.1;
+    color: var(--white);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.65);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.45s ease both;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 0.85rem 2rem;
+    border-radius: 3px;
+    font-weight: 600; font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,151,58,0.3); }
+
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.8);
+    padding: 0.85rem 2rem;
+    border-radius: 3px;
+    font-weight: 500; font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-right {
+    position: relative; z-index: 2;
+    display: flex; justify-content: flex-end;
+    animation: fadeIn 1.2s 0.4s ease both;
+  }
+
+  /* Shift-Left Pyramid Visual */
+  .shift-pyramid {
+    width: 380px;
+  }
+
+  .pyramid-title {
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .pyramid-level {
+    border-radius: 4px;
+    margin-bottom: 6px;
+    padding: 0.8rem 1.2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all 0.3s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pyramid-level::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px;
+  }
+
+  .pyramid-level:hover { transform: translateX(4px); }
+
+  .pl-1 { background: rgba(200,151,58,0.18); border: 1px solid rgba(200,151,58,0.3); }
+  .pl-1::before { background: var(--gold); }
+  .pl-2 { background: rgba(26,58,86,0.8); border: 1px solid rgba(255,255,255,0.08); }
+  .pl-2::before { background: #4A9ECC; }
+  .pl-3 { background: rgba(26,58,86,0.6); border: 1px solid rgba(255,255,255,0.06); }
+  .pl-3::before { background: #5BAA8A; }
+  .pl-4 { background: rgba(26,58,86,0.4); border: 1px solid rgba(255,255,255,0.04); }
+  .pl-4::before { background: #8A7EC8; }
+
+  .pl-label { color: var(--white); font-size: 0.85rem; font-weight: 500; }
+  .pl-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.5);
+  }
+
+  .pyramid-arrow {
+    text-align: center;
+    color: rgba(200,151,58,0.5);
+    font-size: 0.7rem; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 1rem 0 0.5rem;
+    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  }
+
+  .hero-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    margin-top: 2rem;
+    background: rgba(255,255,255,0.06);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .stat-item {
+    background: rgba(11,30,53,0.9);
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 0.2rem;
+    display: block;
+  }
+
+  /* ── SECTIONS COMMON ── */
+  section { padding: 90px 5%; }
+
+  .section-label {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    color: var(--gold);
+    font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-family: 'DM Mono', monospace;
+  }
+  .section-label::before {
+    content: '';
+    width: 24px; height: 1px; background: var(--gold);
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    margin-bottom: 1rem;
+  }
+
+  .section-intro {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--cream); }
+
+  .services-header { margin-bottom: 3.5rem; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(11,30,53,0.08);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .service-card {
+    background: var(--white);
+    padding: 2.5rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+
+  .service-card:hover { background: var(--navy); }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-card:hover .sc-title { color: var(--white); }
+  .service-card:hover .sc-desc { color: rgba(255,255,255,0.55); }
+  .service-card:hover .sc-icon { background: rgba(200,151,58,0.15); }
+  .service-card:hover .sc-tag { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.4); }
+
+  .sc-icon {
+    width: 48px; height: 48px;
+    background: rgba(200,151,58,0.1);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    transition: background 0.3s;
+  }
+
+  .sc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem; font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+    transition: color 0.3s;
+  }
+
+  .sc-desc {
+    font-size: 0.9rem; line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    transition: color 0.3s;
+  }
+
+  .sc-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    padding: 0.2rem 0.6rem;
+    background: rgba(11,30,53,0.06);
+    color: var(--slate);
+    border-radius: 2px;
+    display: inline-block;
+    transition: all 0.3s;
+  }
+
+  /* ── APPROACH / HOW WE WORK ── */
+  #approach {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #approach::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 50%; height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(200,151,58,0.04) 100%);
+    pointer-events: none;
+  }
+
+  #approach h2 { color: var(--white); }
+  #approach .section-intro { color: rgba(255,255,255,0.5); }
+
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 3rem;
+  }
+
+  .approach-step {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    transition: background 0.3s;
+  }
+  .approach-step:last-child { border-right: none; }
+  .approach-step:hover { background: rgba(255,255,255,0.03); }
+
+  .step-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+
+  .step-desc {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.65;
+  }
+
+  /* ── SUCCESS STORIES ── */
+  #stories { background: var(--cream); }
+
+  .stories-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .story-card {
+    background: var(--white);
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(11,30,53,0.08);
+    transition: all 0.3s;
+    display: flex; flex-direction: column;
+  }
+  .story-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(11,30,53,0.12); }
+
+  .story-card.featured {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .story-visual {
+    background: var(--navy);
+    padding: 3rem;
+    display: flex; flex-direction: column; justify-content: space-between;
+    min-height: 260px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .story-visual::before {
+    content: '';
+    position: absolute; bottom: -40px; right: -40px;
+    width: 200px; height: 200px;
+    border: 1px solid rgba(200,151,58,0.15);
+    border-radius: 50%;
+  }
+  .story-visual::after {
+    content: '';
+    position: absolute; bottom: -80px; right: -80px;
+    width: 280px; height: 280px;
+    border: 1px solid rgba(200,151,58,0.08);
+    border-radius: 50%;
+  }
+
+  .story-industry {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--gold);
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+
+  .story-metric {
+    position: relative; z-index: 2;
+  }
+
+  .metric-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem; font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .metric-label {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+  }
+
+  .story-content { padding: 2.5rem; }
+
+  .story-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    padding: 0.2rem 0.6rem;
+    background: rgba(200,151,58,0.1);
+    color: var(--gold);
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  .story-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .story-body {
+    font-size: 0.9rem; line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .story-results {
+    display: flex; gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .result-item { text-align: center; }
+  .result-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 700;
+    color: var(--navy);
+    display: block;
+  }
+  .result-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── WHY MERIDIAN ── */
+  #why {
+    background: var(--navy);
+    color: var(--white);
+  }
+  #why h2 { color: var(--white); }
+
+  .why-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  .why-left {}
+
+  .differentiator {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    display: flex; gap: 1.2rem; align-items: flex-start;
+  }
+  .differentiator:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+
+  .diff-icon {
+    width: 36px; height: 36px;
+    background: rgba(200,151,58,0.1);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .diff-title {
+    font-weight: 600; color: var(--white);
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+  }
+
+  .diff-desc {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.65;
+  }
+
+  /* Scope card */
+  .scope-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    padding: 2.5rem;
+  }
+
+  .scope-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .scope-sub {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.875rem;
+    margin-bottom: 2rem;
+  }
+
+  .scope-items {
+    display: flex; flex-direction: column; gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .scope-item {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .scope-check {
+    width: 18px; height: 18px;
+    background: rgba(200,151,58,0.15);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .scope-note {
+    padding: 1rem 1.2rem;
+    background: rgba(200,151,58,0.08);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 3px 3px 0;
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
+
+  /* ── ARCHITECTURE ── */
+  #architecture { background: #F0EDE8; }
+
+  .arch-diagram {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 3rem;
+    border: 1px solid rgba(11,30,53,0.08);
+    margin-top: 3rem;
+    overflow-x: auto;
+  }
+
+  .arch-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--slate);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .arch-layers {
+    display: flex; flex-direction: column; gap: 1rem;
+    max-width: 900px; margin: 0 auto;
+  }
+
+  .arch-layer {
+    display: flex; align-items: center; gap: 1rem;
+  }
+
+  .layer-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--slate);
+    letter-spacing: 0.08em;
+    width: 100px;
+    text-align: right;
+    flex-shrink: 0;
+    text-transform: uppercase;
+  }
+
+  .layer-blocks {
+    display: flex; gap: 0.75rem; flex: 1; flex-wrap: wrap;
+  }
+
+  .arch-block {
+    padding: 0.6rem 1rem;
+    border-radius: 3px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .ab-blue { background: rgba(74,158,204,0.1); color: #2A7FAB; border: 1px solid rgba(74,158,204,0.25); }
+  .ab-gold { background: rgba(200,151,58,0.1); color: #8A6020; border: 1px solid rgba(200,151,58,0.25); }
+  .ab-green { background: rgba(91,170,138,0.1); color: #2A7A5A; border: 1px solid rgba(91,170,138,0.25); }
+  .ab-purple { background: rgba(138,126,200,0.1); color: #5A4A9A; border: 1px solid rgba(138,126,200,0.25); }
+  .ab-navy { background: rgba(11,30,53,0.07); color: var(--navy); border: 1px solid rgba(11,30,53,0.12); }
+
+  .arch-arrow {
+    text-align: center;
+    color: rgba(11,30,53,0.2);
+    font-size: 1.2rem;
+    margin: -0.3rem 0;
+    padding-left: 116px;
+  }
+
+  /* ── DB SCHEMA ── */
+  #schema { background: var(--navy); }
+  #schema h2 { color: var(--white); }
+  #schema .section-intro { color: rgba(255,255,255,0.5); }
+
+  .schema-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .schema-table {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .schema-header {
+    background: rgba(200,151,58,0.12);
+    border-bottom: 1px solid rgba(200,151,58,0.2);
+    padding: 0.8rem 1.2rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+
+  .schema-table-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--gold);
+  }
+
+  .schema-pk-badge {
+    font-size: 0.6rem;
+    padding: 0.1rem 0.4rem;
+    background: rgba(200,151,58,0.2);
+    color: var(--gold-light);
+    border-radius: 2px;
+    letter-spacing: 0.06em;
+  }
+
+  .schema-fields {
+    padding: 0.75rem 0;
+  }
+
+  .schema-field {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.4rem 1.2rem;
+    font-size: 0.78rem;
+  }
+  .schema-field:hover { background: rgba(255,255,255,0.02); }
+
+  .field-name {
+    font-family: 'DM Mono', monospace;
+    color: rgba(255,255,255,0.75);
+  }
+  .field-name.pk { color: var(--gold); }
+  .field-name.fk { color: #4A9ECC; }
+
+  .field-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ── IMPLEMENTATION PLAN ── */
+  #implementation { background: var(--cream); }
+
+  .impl-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 3rem;
+    border: 1px solid rgba(11,30,53,0.1);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .impl-phase {
+    padding: 2.5rem;
+    border-right: 1px solid rgba(11,30,53,0.1);
+    position: relative;
+  }
+  .impl-phase:last-child { border-right: none; }
+
+  .phase-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .phase-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+
+  .phase-duration {
+    font-size: 0.78rem;
+    color: var(--slate);
+    margin-bottom: 1.5rem;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .phase-tasks {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 0.5rem;
+  }
+
+  .phase-task {
+    display: flex; align-items: flex-start; gap: 0.6rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .task-dot {
+    width: 5px; height: 5px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  /* ── CTA ── */
+  #cta {
+    background: var(--navy);
+    text-align: center;
+    padding: 100px 5%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #cta::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(200,151,58,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  #cta h2 { color: var(--white); max-width: 600px; margin: 0 auto 1rem; }
+  #cta .section-intro { color: rgba(255,255,255,0.5); max-width: 500px; margin: 0 auto 2.5rem; }
+
+  .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #080F1C;
+    padding: 3rem 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--white);
+  }
+  .footer-logo span { color: var(--gold); }
+
+  .footer-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .footer-links a {
+    color: rgba(255,255,255,0.35);
+    font-size: 0.8rem; text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold-light); }
+
+  .footer-copy {
+    color: rgba(255,255,255,0.2);
+    font-size: 0.78rem;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .approach-grid { grid-template-columns: repeat(2, 1fr); }
+    .story-card.featured { grid-column: span 1; display: flex; flex-direction: column; }
+    .stories-grid { grid-template-columns: 1fr; }
+    .why-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    .schema-grid { grid-template-columns: 1fr 1fr; }
+    .impl-grid { grid-template-columns: 1fr; }
+    .impl-phase { border-right: none; border-bottom: 1px solid rgba(11,30,53,0.1); }
+    .impl-phase:last-child { border-bottom: none; }
+  }
+
+  @media (max-width: 640px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .approach-grid { grid-template-columns: 1fr; }
+    .schema-grid { grid-template-columns: 1fr; }
+    nav { padding: 0 4%; }
+    .nav-links { display: none; }
+  }
+</style>
 </head>
-<body class="coming-soon-body">
-  <div class="cs-wrap">
-    <div class="cs-logo">
-      <span class="logo-bracket">[</span>ShiftLeft<span class="logo-accent">IQ</span><span class="logo-bracket">]</span>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Meridian<span>.</span>ITSM</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#approach">Approach</a></li>
+    <li><a href="#stories">Results</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#architecture">Design</a></li>
+  </ul>
+  <a href="#cta" class="nav-cta">Get Assessment</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Shift-Left ITSM Consulting</div>
+    <h1>Resolve More.<br>Spend <em>Less.</em><br>Scale Faster.</h1>
+    <p class="hero-sub">We help organizations under 5,000 employees optimize IT Service Management through proven Shift-Left strategies — moving support to the lowest-cost, most efficient point of resolution.</p>
+    <div class="hero-actions">
+      <a href="#cta" class="btn-primary">Free Readiness Assessment</a>
+      <a href="#stories" class="btn-outline">See Client Results</a>
     </div>
-    <div class="cs-divider"></div>
-    <p class="cs-msg">Something big is coming.</p>
-    <p class="cs-sub">We're building something great. Check back soon.</p>
-    <a href="mailto:info@shiftleftiq.com" class="cs-contact">info@shiftleftiq.com</a>
   </div>
+
+  <div class="hero-right">
+    <div class="shift-pyramid">
+      <div class="pyramid-title">The Shift-Left Resolution Model</div>
+      <div class="pyramid-level pl-1">
+        <span class="pl-label">🤖 AI / Automation</span>
+        <span class="pl-tag">Tier 0</span>
+      </div>
+      <div class="pyramid-level pl-2">
+        <span class="pl-label">🔍 Self-Service Portal</span>
+        <span class="pl-tag">Tier 1</span>
+      </div>
+      <div class="pyramid-level pl-3">
+        <span class="pl-label">💬 Service Desk</span>
+        <span class="pl-tag">Tier 2</span>
+      </div>
+      <div class="pyramid-level pl-4">
+        <span class="pl-label">⚙️ Specialist Teams</span>
+        <span class="pl-tag">Tier 3</span>
+      </div>
+      <div class="pyramid-arrow">
+        ← shift resolution left &nbsp;|&nbsp; reduce cost →
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">40%</span>
+          <span class="stat-label">Cost Reduction</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">3×</span>
+          <span class="stat-label">Faster MTTR</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">85%</span>
+          <span class="stat-label">CSAT Target</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header reveal">
+    <div class="section-label">What We Do</div>
+    <h2>Six Pillars of<br>ITSM Transformation</h2>
+    <p class="section-intro">Every engagement is grounded in process, people, and technology — aligned to your maturity level and business goals.</p>
+  </div>
+
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <div class="sc-icon">🔄</div>
+      <div class="sc-title">Process Optimization</div>
+      <p class="sc-desc">Redesign incident, change, and problem management workflows to eliminate waste, reduce toil, and align to ITIL 4 best practices.</p>
+      <span class="sc-tag">ITIL 4 Aligned</span>
+    </div>
+    <div class="service-card">
+      <div class="sc-icon">📚</div>
+      <div class="sc-title">Knowledge Management</div>
+      <p class="sc-desc">Build a self-sustaining KCS knowledge base that powers agent efficiency, self-service deflection, and AI-assisted resolution at scale.</p>
+      <span class="sc-tag">KCS Methodology</span>
+    </div>
+    <div class="service-card">
+      <div class="sc-icon">🖥️</div>
+      <div class="sc-title">Self-Service Enablement</div>
+      <p class="sc-desc">Design and deploy service portals and automated workflows that empower end-users to resolve issues without ever contacting the help desk.</p>
+      <span class="sc-tag">Shift-Left</span>
+    </div>
+    <div class="service-card">
+      <div class="sc-icon">🤖</div>
+      <div class="sc-title">AI & Automation</div>
+      <p class="sc-desc">Integrate intelligent automation, virtual agents, and AI-assisted triage across your ITSM platform to handle Tier-0 volume without human effort.</p>
+      <span class="sc-tag">AI-Powered</span>
+    </div>
+    <div class="service-card">
+      <div class="sc-icon">📊</div>
+      <div class="sc-title">SLA Governance & Metrics</div>
+      <p class="sc-desc">Establish meaningful SLA frameworks, dashboards, and OKR-linked metrics that give leadership real-time visibility into IT performance.</p>
+      <span class="sc-tag">Executive Reporting</span>
+    </div>
+    <div class="service-card">
+      <div class="sc-icon">🎯</div>
+      <div class="sc-title">Executive Coaching</div>
+      <p class="sc-desc">ICF-credentialed coaching for IT leaders navigating change. We bridge the knowing-doing gap with ADKAR-based change management frameworks.</p>
+      <span class="sc-tag">ICF Credentialed</span>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach">
+  <div class="reveal">
+    <div class="section-label" style="color: var(--gold-light);">How We Work</div>
+    <h2>The Meridian Method</h2>
+    <p class="section-intro">A structured four-phase engagement model that delivers measurable outcomes — not just recommendations.</p>
+  </div>
+
+  <div class="approach-grid reveal">
+    <div class="approach-step">
+      <span class="step-num">01 / DISCOVER</span>
+      <div class="step-title">Maturity Assessment & Gap Analysis</div>
+      <p class="step-desc">We audit your current-state ITSM processes, tooling, and team capabilities using our proprietary maturity model — producing a prioritized gap analysis and opportunity roadmap.</p>
+    </div>
+    <div class="approach-step">
+      <span class="step-num">02 / DESIGN</span>
+      <div class="step-title">Strategy & Architecture Blueprint</div>
+      <p class="step-desc">Co-design a future-state operating model with defined shift-left targets, technology architecture, KPIs, and a 90/180/360-day implementation roadmap.</p>
+    </div>
+    <div class="approach-step">
+      <span class="step-num">03 / DEPLOY</span>
+      <div class="step-title">Implementation & Change Management</div>
+      <p class="step-desc">Hands-on deployment of process changes, platform configurations, knowledge articles, and self-service capabilities — with ADKAR-driven adoption to ensure lasting change.</p>
+    </div>
+    <div class="approach-step">
+      <span class="step-num">04 / SUSTAIN</span>
+      <div class="step-title">Governance & Continuous Improvement</div>
+      <p class="step-desc">Establish ongoing governance cadence, executive dashboards, and quarterly CI reviews so gains compound over time and your team owns the outcomes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SUCCESS STORIES -->
+<section id="stories">
+  <div class="reveal">
+    <div class="section-label">Client Results</div>
+    <h2>Success Stories That<br>Speak for Themselves</h2>
+    <p class="section-intro">Every story is a real engagement. Real metrics. Real transformation.</p>
+  </div>
+
+  <div class="stories-grid reveal">
+    <!-- Featured -->
+    <div class="story-card featured">
+      <div class="story-visual">
+        <div class="story-industry">Healthcare · 2,800 Employees</div>
+        <div class="story-metric">
+          <div class="metric-num">62%</div>
+          <div class="metric-label">reduction in Tier-1 ticket volume in 6 months</div>
+        </div>
+      </div>
+      <div class="story-content">
+        <span class="story-tag">Self-Service + Knowledge Management</span>
+        <div class="story-title">Regional Health Network Cuts Help Desk Volume in Half</div>
+        <p class="story-body">A regional healthcare organization was drowning in repetitive password resets, access requests, and software installs — all hitting the help desk at Tier-1 cost. Meridian implemented a structured knowledge base, automated self-service workflows, and a rebranded employee portal within a 90-day sprint.</p>
+        <div class="story-results">
+          <div class="result-item">
+            <span class="result-num">62%</span>
+            <span class="result-label">Deflection Rate</span>
+          </div>
+          <div class="result-item">
+            <span class="result-num">$480K</span>
+            <span class="result-label">Annual Savings</span>
+          </div>
+          <div class="result-item">
+            <span class="result-num">91%</span>
+            <span class="result-label">CSAT Score</span>
+          </div>
+          <div class="result-item">
+            <span class="result-num">4.2hr→47m</span>
+            <span class="result-label">Avg Resolution Time</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="story-card">
+      <div class="story-visual">
+        <div class="story-industry">Financial Services · 1,200 Employees</div>
+        <div class="story-metric">
+          <div class="metric-num">38%</div>
+          <div class="metric-label">improvement in SLA compliance</div>
+        </div>
+      </div>
+      <div class="story-content">
+        <span class="story-tag">SLA Governance + Process Design</span>
+        <div class="story-title">FinTech Firm Rebuilds ITSM Foundation Post-Acquisition</div>
+        <p class="story-body">Following a merger, this financial services firm had fragmented ITSM processes across two legacy systems. Meridian unified the operating model, redesigned SLA tiers, and stood up a consolidated service desk within 120 days.</p>
+        <div class="story-results">
+          <div class="result-item">
+            <span class="result-num">38%</span>
+            <span class="result-label">SLA Compliance Gain</span>
+          </div>
+          <div class="result-item">
+            <span class="result-num">2→1</span>
+            <span class="result-label">Platform Consolidation</span>
+          </div>
+          <div class="result-item">
+            <span class="result-num">120 days</span>
+            <span class="result-label">Time to Value</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="story-card">
+      <div class="story-visual">
+        <div class="story-industry">Manufacturing · 4,100 Employees</div>
+        <div class="story-metric">
+          <div class="metric-num">3.1×</div>
+          <div class="metric-label">improvement in MTTR across all incident tiers</div>
+        </div>
+      </div>
+      <div class="story-content">
+        <span class="story-tag">AI Automation + Incident Management</span>
+        <div class="story-title">Global Manufacturer Deploys AI-Powered Triage at Scale</div>
+        <p class="story-body">A manufacturing enterprise struggled with slow incident triage and over-escalation to Tier-3 specialists. Meridian deployed an AI virtual agent integrated with their ITSM platform, reducing misrouted tickets by 71% and accelerating MTTR by a factor of three.</p>
+        <div class="story-results">
+          <div class="result-item">
+            <span class="result-num">71%</span>
+            <span class="result-label">Misroute Reduction</span>
+          </div>
+          <div class="result-item">
+            <span class="result-num">3.1×</span>
+            <span class="result-label">MTTR Improvement</span>
+          </div>
+          <div class="result-item">
+            <span class="result-num">18%</span>
+            <span class="result-label">Headcount Efficiency</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY MERIDIAN -->
+<section id="why">
+  <div class="reveal">
+    <div class="section-label" style="color: var(--gold-light);">Our Differentiation</div>
+    <h2>Built Different.<br>By Design.</h2>
+  </div>
+
+  <div class="why-layout reveal">
+    <div class="why-left">
+      <div class="differentiator">
+        <div class="diff-icon">🏆</div>
+        <div>
+          <div class="diff-title">30+ Years of Practitioner Experience</div>
+          <p class="diff-desc">We've led IT organizations through startups, enterprises, acquisitions, and post-merger transitions. Our advice comes from real experience — not theory.</p>
+        </div>
+      </div>
+      <div class="differentiator">
+        <div class="diff-icon">🔗</div>
+        <div>
+          <div class="diff-title">ITSM + Executive Coaching in One Practice</div>
+          <p class="diff-desc">The only consultancy that pairs deep ITSM technical expertise with ICF-credentialed coaching — closing the knowing-doing gap that sinks most transformations.</p>
+        </div>
+      </div>
+      <div class="differentiator">
+        <div class="diff-icon">🧭</div>
+        <div>
+          <div class="diff-title">ADKAR-Driven Change Management</div>
+          <p class="diff-desc">Technology alone doesn't transform organizations. We embed Prosci ADKAR methodology into every engagement so adoption sticks long after we leave.</p>
+        </div>
+      </div>
+      <div class="differentiator">
+        <div class="diff-icon">🎯</div>
+        <div>
+          <div class="diff-title">Purpose-Built for Mid-Market IT</div>
+          <p class="diff-desc">Under 5,000 employees. Agile enough to move fast. Complex enough to need real ITSM discipline. That's our sweet spot — and we stay in it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-right">
+      <div class="scope-card">
+        <div class="scope-title">Who We Serve Best</div>
+        <div class="scope-sub">Our engagements are purpose-built for organizations where ITSM maturity matters but budget is finite.</div>
+        <div class="scope-items">
+          <div class="scope-item"><div class="scope-check">✓</div>500 – 5,000 employees</div>
+          <div class="scope-item"><div class="scope-check">✓</div>IT teams of 5 to 50 staff</div>
+          <div class="scope-item"><div class="scope-check">✓</div>ServiceNow, Freshservice, Jira, or similar ITSM platforms</div>
+          <div class="scope-item"><div class="scope-check">✓</div>Organizations experiencing rapid growth or post-merger integration</div>
+          <div class="scope-item"><div class="scope-check">✓</div>CIOs under pressure to reduce OpEx while improving service quality</div>
+          <div class="scope-item"><div class="scope-check">✓</div>Teams exploring AI adoption with real governance concerns</div>
+        </div>
+        <div class="scope-note">
+          <strong style="color: var(--gold-light);">Our promise:</strong> Every engagement includes a measurable ROI target defined in week one. If we can't find 3× value in your environment, we'll tell you before you sign.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE DIAGRAM -->
+<section id="architecture">
+  <div class="reveal">
+    <div class="section-label">Technical Design</div>
+    <h2>Website Architecture</h2>
+    <p class="section-intro">A JAMstack architecture optimized for performance, content management, and lead generation — built to scale without operational overhead.</p>
+  </div>
+
+  <div class="arch-diagram reveal">
+    <div class="arch-title">// meridian-itsm.com — system architecture diagram</div>
+
+    <div class="arch-layers">
+      <div class="arch-layer">
+        <div class="layer-label">Client Layer</div>
+        <div class="layer-blocks">
+          <div class="arch-block ab-blue">Web Browser (React / Next.js)</div>
+          <div class="arch-block ab-blue">Mobile Browser</div>
+          <div class="arch-block ab-blue">Accessibility Layer (WCAG 2.1)</div>
+        </div>
+      </div>
+
+      <div class="arch-arrow">↕</div>
+
+      <div class="arch-layer">
+        <div class="layer-label">CDN / Edge</div>
+        <div class="layer-blocks">
+          <div class="arch-block ab-gold">Cloudflare CDN</div>
+          <div class="arch-block ab-gold">Edge Caching (ISR)</div>
+          <div class="arch-block ab-gold">DDoS Protection</div>
+          <div class="arch-block ab-gold">SSL / TLS Termination</div>
+        </div>
+      </div>
+
+      <div class="arch-arrow">↕</div>
+
+      <div class="arch-layer">
+        <div class="layer-label">App Layer</div>
+        <div class="layer-blocks">
+          <div class="arch-block ab-green">Next.js App (Vercel)</div>
+          <div class="arch-block ab-green">Static Site Generation (SSG)</div>
+          <div class="arch-block ab-green">API Routes</div>
+          <div class="arch-block ab-green">Server Components</div>
+        </div>
+      </div>
+
+      <div class="arch-arrow">↕</div>
+
+      <div class="arch-layer">
+        <div class="layer-label">Services</div>
+        <div class="layer-blocks">
+          <div class="arch-block ab-purple">Sanity CMS (Content)</div>
+          <div class="arch-block ab-purple">HubSpot CRM (Leads)</div>
+          <div class="arch-block ab-purple">SendGrid (Email)</div>
+          <div class="arch-block ab-purple">Calendly API (Scheduling)</div>
+          <div class="arch-block ab-purple">Google Analytics 4</div>
+        </div>
+      </div>
+
+      <div class="arch-arrow">↕</div>
+
+      <div class="arch-layer">
+        <div class="layer-label">Data Layer</div>
+        <div class="layer-blocks">
+          <div class="arch-block ab-navy">PostgreSQL (Supabase)</div>
+          <div class="arch-block ab-navy">CMS Document Store</div>
+          <div class="arch-block ab-navy">Form Submissions</div>
+          <div class="arch-block ab-navy">Analytics Events</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DATABASE SCHEMA -->
+<section id="schema">
+  <div class="reveal">
+    <div class="section-label" style="color: var(--gold-light);">Data Design</div>
+    <h2>Database Schema</h2>
+    <p class="section-intro">Normalized schema powering service catalog, client stories, lead capture, and assessment intake.</p>
+  </div>
+
+  <div class="schema-grid reveal">
+
+    <div class="schema-table">
+      <div class="schema-header">
+        <div class="schema-table-name">services</div>
+        <div class="schema-pk-badge">core</div>
+      </div>
+      <div class="schema-fields">
+        <div class="schema-field"><span class="field-name pk">id</span><span class="field-type">UUID PK</span></div>
+        <div class="schema-field"><span class="field-name">slug</span><span class="field-type">VARCHAR(100)</span></div>
+        <div class="schema-field"><span class="field-name">title</span><span class="field-type">VARCHAR(200)</span></div>
+        <div class="schema-field"><span class="field-name">description</span><span class="field-type">TEXT</span></div>
+        <div class="schema-field"><span class="field-name">category</span><span class="field-type">ENUM</span></div>
+        <div class="schema-field"><span class="field-name">icon_code</span><span class="field-type">VARCHAR(20)</span></div>
+        <div class="schema-field"><span class="field-name">sort_order</span><span class="field-type">INT</span></div>
+        <div class="schema-field"><span class="field-name">is_active</span><span class="field-type">BOOLEAN</span></div>
+        <div class="schema-field"><span class="field-name">created_at</span><span class="field-type">TIMESTAMPTZ</span></div>
+      </div>
+    </div>
+
+    <div class="schema-table">
+      <div class="schema-header">
+        <div class="schema-table-name">client_stories</div>
+        <div class="schema-pk-badge">content</div>
+      </div>
+      <div class="schema-fields">
+        <div class="schema-field"><span class="field-name pk">id</span><span class="field-type">UUID PK</span></div>
+        <div class="schema-field"><span class="field-name">title</span><span class="field-type">VARCHAR(300)</span></div>
+        <div class="schema-field"><span class="field-name">industry</span><span class="field-type">VARCHAR(100)</span></div>
+        <div class="schema-field"><span class="field-name">employee_count</span><span class="field-type">INT</span></div>
+        <div class="schema-field"><span class="field-name">challenge_text</span><span class="field-type">TEXT</span></div>
+        <div class="schema-field"><span class="field-name">solution_text</span><span class="field-type">TEXT</span></div>
+        <div class="schema-field"><span class="field-name">is_featured</span><span class="field-type">BOOLEAN</span></div>
+        <div class="schema-field"><span class="field-name">published_at</span><span class="field-type">DATE</span></div>
+      </div>
+    </div>
+
+    <div class="schema-table">
+      <div class="schema-header">
+        <div class="schema-table-name">story_metrics</div>
+        <div class="schema-pk-badge">results</div>
+      </div>
+      <div class="schema-fields">
+        <div class="schema-field"><span class="field-name pk">id</span><span class="field-type">UUID PK</span></div>
+        <div class="schema-field"><span class="field-name fk">story_id</span><span class="field-type">UUID FK</span></div>
+        <div class="schema-field"><span class="field-name">metric_label</span><span class="field-type">VARCHAR(100)</span></div>
+        <div class="schema-field"><span class="field-name">metric_value</span><span class="field-type">VARCHAR(50)</span></div>
+        <div class="schema-field"><span class="field-name">metric_type</span><span class="field-type">ENUM</span></div>
+        <div class="schema-field"><span class="field-name">display_order</span><span class="field-type">INT</span></div>
+      </div>
+    </div>
+
+    <div class="schema-table">
+      <div class="schema-header">
+        <div class="schema-table-name">leads</div>
+        <div class="schema-pk-badge">crm</div>
+      </div>
+      <div class="schema-fields">
+        <div class="schema-field"><span class="field-name pk">id</span><span class="field-type">UUID PK</span></div>
+        <div class="schema-field"><span class="field-name">first_name</span><span class="field-type">VARCHAR(100)</span></div>
+        <div class="schema-field"><span class="field-name">last_name</span><span class="field-type">VARCHAR(100)</span></div>
+        <div class="schema-field"><span class="field-name">email</span><span class="field-type">VARCHAR(255)</span></div>
+        <div class="schema-field"><span class="field-name">company</span><span class="field-type">VARCHAR(200)</span></div>
+        <div class="schema-field"><span class="field-name">title</span><span class="field-type">VARCHAR(200)</span></div>
+        <div class="schema-field"><span class="field-name">employee_range</span><span class="field-type">ENUM</span></div>
+        <div class="schema-field"><span class="field-name">source</span><span class="field-type">VARCHAR(100)</span></div>
+        <div class="schema-field"><span class="field-name">created_at</span><span class="field-type">TIMESTAMPTZ</span></div>
+      </div>
+    </div>
+
+    <div class="schema-table">
+      <div class="schema-header">
+        <div class="schema-table-name">assessments</div>
+        <div class="schema-pk-badge">intake</div>
+      </div>
+      <div class="schema-fields">
+        <div class="schema-field"><span class="field-name pk">id</span><span class="field-type">UUID PK</span></div>
+        <div class="schema-field"><span class="field-name fk">lead_id</span><span class="field-type">UUID FK</span></div>
+        <div class="schema-field"><span class="field-name">current_platform</span><span class="field-type">VARCHAR(100)</span></div>
+        <div class="schema-field"><span class="field-name">maturity_score</span><span class="field-type">DECIMAL(3,1)</span></div>
+        <div class="schema-field"><span class="field-name">top_challenges</span><span class="field-type">JSONB</span></div>
+        <div class="schema-field"><span class="field-name">priority_areas</span><span class="field-type">JSONB</span></div>
+        <div class="schema-field"><span class="field-name">status</span><span class="field-type">ENUM</span></div>
+        <div class="schema-field"><span class="field-name">submitted_at</span><span class="field-type">TIMESTAMPTZ</span></div>
+      </div>
+    </div>
+
+    <div class="schema-table">
+      <div class="schema-header">
+        <div class="schema-table-name">team_members</div>
+        <div class="schema-pk-badge">about</div>
+      </div>
+      <div class="schema-fields">
+        <div class="schema-field"><span class="field-name pk">id</span><span class="field-type">UUID PK</span></div>
+        <div class="schema-field"><span class="field-name">full_name</span><span class="field-type">VARCHAR(200)</span></div>
+        <div class="schema-field"><span class="field-name">role</span><span class="field-type">VARCHAR(200)</span></div>
+        <div class="schema-field"><span class="field-name">bio</span><span class="field-type">TEXT</span></div>
+        <div class="schema-field"><span class="field-name">credentials</span><span class="field-type">JSONB</span></div>
+        <div class="schema-field"><span class="field-name">linkedin_url</span><span class="field-type">VARCHAR(300)</span></div>
+        <div class="schema-field"><span class="field-name">headshot_url</span><span class="field-type">VARCHAR(500)</span></div>
+        <div class="schema-field"><span class="field-name">sort_order</span><span class="field-type">INT</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- IMPLEMENTATION PLAN -->
+<section id="implementation">
+  <div class="reveal">
+    <div class="section-label">Build Roadmap</div>
+    <h2>90-Day Implementation Plan</h2>
+    <p class="section-intro">From zero to production-ready in three focused sprints — prioritizing lead generation and content impact from day one.</p>
+  </div>
+
+  <div class="impl-grid reveal">
+    <div class="impl-phase">
+      <span class="phase-num">Phase 01</span>
+      <div class="phase-name">Foundation</div>
+      <div class="phase-duration">Weeks 1 – 4</div>
+      <ul class="phase-tasks">
+        <li class="phase-task"><div class="task-dot"></div>Domain, DNS, and Cloudflare configuration</li>
+        <li class="phase-task"><div class="task-dot"></div>Next.js + Tailwind project scaffolding</li>
+        <li class="phase-task"><div class="task-dot"></div>Sanity CMS setup and content schema</li>
+        <li class="phase-task"><div class="task-dot"></div>Supabase PostgreSQL provisioning</li>
+        <li class="phase-task"><div class="task-dot"></div>Homepage, Services, and About pages</li>
+        <li class="phase-task"><div class="task-dot"></div>HubSpot form integration (lead capture)</li>
+        <li class="phase-task"><div class="task-dot"></div>Core SEO metadata and sitemap</li>
+      </ul>
+    </div>
+    <div class="impl-phase">
+      <span class="phase-num">Phase 02</span>
+      <div class="phase-name">Content & Conversion</div>
+      <div class="phase-duration">Weeks 5 – 8</div>
+      <ul class="phase-tasks">
+        <li class="phase-task"><div class="task-dot"></div>Client Success Stories CMS templates</li>
+        <li class="phase-task"><div class="task-dot"></div>Interactive Assessment intake form</li>
+        <li class="phase-task"><div class="task-dot"></div>Calendly scheduling integration</li>
+        <li class="phase-task"><div class="task-dot"></div>Blog / Insights content pipeline</li>
+        <li class="phase-task"><div class="task-dot"></div>SendGrid email sequences setup</li>
+        <li class="phase-task"><div class="task-dot"></div>Google Analytics 4 event tracking</li>
+        <li class="phase-task"><div class="task-dot"></div>Mobile responsiveness QA pass</li>
+      </ul>
+    </div>
+    <div class="impl-phase">
+      <span class="phase-num">Phase 03</span>
+      <div class="phase-name">Launch & Growth</div>
+      <div class="phase-duration">Weeks 9 – 12</div>
+      <ul class="phase-tasks">
+        <li class="phase-task"><div class="task-dot"></div>Performance audit (Core Web Vitals)</li>
+        <li class="phase-task"><div class="task-dot"></div>Accessibility audit (WCAG 2.1 AA)</li>
+        <li class="phase-task"><div class="task-dot"></div>LinkedIn Insight Tag + conversion pixels</li>
+        <li class="phase-task"><div class="task-dot"></div>Full content population and review</li>
+        <li class="phase-task"><div class="task-dot"></div>Staging → Production deployment</li>
+        <li class="phase-task"><div class="task-dot"></div>Analytics dashboards and KPI baselines</li>
+        <li class="phase-task"><div class="task-dot"></div>Team CMS training and handoff</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="reveal">
+    <div class="section-label" style="color: var(--gold-light); justify-content: center;">Take the First Step</div>
+    <h2>Ready to Shift Left?</h2>
+    <p class="section-intro">Start with a free 60-minute ITSM Readiness Assessment. We'll identify your top three highest-ROI opportunities — no obligation, no sales pitch.</p>
+    <div class="cta-actions">
+      <a href="#" class="btn-primary">Schedule Free Assessment</a>
+      <a href="#stories" class="btn-outline">Read Client Stories</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Meridian<span>.</span>ITSM</div>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#stories">Results</a></li>
+    <li><a href="#approach">Approach</a></li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#cta">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Meridian ITSM Consulting Group. All rights reserved.</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Stagger reveal children
+  document.querySelectorAll('.services-grid .service-card, .approach-step, .schema-table, .impl-phase').forEach((el, i) => {
+    el.style.transitionDelay = `${(i % 4) * 0.1}s`;
+  });
+</script>
+
 </body>
 </html>
